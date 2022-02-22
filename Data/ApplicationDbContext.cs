@@ -10,6 +10,8 @@ namespace Orion.Data
             : base(options)
         {
         }
+
+        public DbSet<Events> Events { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
