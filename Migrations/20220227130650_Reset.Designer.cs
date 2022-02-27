@@ -9,11 +9,11 @@ using Orion.Data;
 
 #nullable disable
 
-namespace Orion.Data.Migrations
+namespace Orion.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220222175008_Event")]
-    partial class Event
+    [Migration("20220227130650_Reset")]
+    partial class Reset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -236,13 +236,53 @@ namespace Orion.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Orion.Models.Events", b =>
+            modelBuilder.Entity("Orion.Models.EventRegistrations", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("EventIdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserIdId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventIdId");
+
+                    b.HasIndex("UserIdId");
+
+                    b.ToTable("EventRegistrations");
+                });
+
+            modelBuilder.Entity("Orion.Models.RegistrationForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RegistrationForm");
+                });
+
+            modelBuilder.Entity("Orion.Models.Tour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -260,7 +300,7 @@ namespace Orion.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Tours");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -312,6 +352,23 @@ namespace Orion.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Orion.Models.EventRegistrations", b =>
+                {
+                    b.HasOne("Orion.Models.Tour", "EventId")
+                        .WithMany()
+                        .HasForeignKey("EventIdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Orion.Models.ApplicationUser", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserIdId");
+
+                    b.Navigation("EventId");
+
+                    b.Navigation("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,7 +11,11 @@ namespace Orion.Data
         {
         }
 
-        public DbSet<Events> Events { get; set; }
+        public DbSet<Tour> Tours { get; set; }
+
+        public DbSet<RegistrationForm> RegistrationForm { get; set; }
+
+        public DbSet<EventRegistrations> EventRegistrations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
