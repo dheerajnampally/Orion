@@ -1,6 +1,6 @@
 ﻿namespace Orion.Models
 {
-    public class Tour
+    public class Tours
     {
         public int Id { get; set; }
         public string Name { get; set; }

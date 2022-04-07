@@ -11,7 +11,7 @@ namespace Orion.Data
         {
         }
 
-        public DbSet<Tour> Tours { get; set; }
+        public DbSet<Tours> Tours { get; set; }
 
         public DbSet<RegistrationForm> RegistrationForm { get; set; }
 

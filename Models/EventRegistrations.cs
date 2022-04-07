@@ -3,7 +3,7 @@
     public class EventRegistrations
     {
         public int Id { get; set; }
-        public ApplicationUser UserId { get; set; }
-        public Tour EventId { get; set; }
+        public ApplicationUser User { get; set; }
+        public Tours Tour { get; set; }
     }
 }

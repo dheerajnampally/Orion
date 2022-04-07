@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orion.Data;
 
@@ -11,9 +12,10 @@ using Orion.Data;
 namespace Orion.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220227162451_RenameBadmintonTours")]
+    partial class RenameBadmintonTours
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,17 +244,17 @@ namespace Orion.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("TourId")
+                    b.Property<int>("TourIdId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserIdId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TourId");
+                    b.HasIndex("TourIdId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserIdId");
 
                     b.ToTable("EventRegistrations");
                 });
@@ -298,7 +300,7 @@ namespace Orion.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tours");
+                    b.ToTable("BadmintonTours");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -354,19 +356,19 @@ namespace Orion.Migrations
 
             modelBuilder.Entity("Orion.Models.EventRegistrations", b =>
                 {
-                    b.HasOne("Orion.Models.Tours", "Tour")
+                    b.HasOne("Orion.Models.Tours", "TourId")
                         .WithMany()
-                        .HasForeignKey("TourId")
+                        .HasForeignKey("TourIdId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Orion.Models.ApplicationUser", "User")
+                    b.HasOne("Orion.Models.ApplicationUser", "UserId")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserIdId");
 
-                    b.Navigation("Tour");
+                    b.Navigation("TourId");
 
-                    b.Navigation("User");
+                    b.Navigation("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,18 +1,186 @@
+/*
+    Blue #0d0786
+    Yellow #f4d03f
+    yellow background input :#fafdc0 , #faffc0
+*/
+
+.navbar {
+    position: relative;
+}
+
+.brand {
+    position: absolute;
+    left: 40%;
+    margin-left: -70px !important; /* 50% of your logo width */
+    display: block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-family: "Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #f4d03f;
+}
+
+.containerFirstLetterBig {
+    width: 60%;
+    margin: 1rem auto;
+    padding: 2rem;
+    text-align: justify;
+    transition: all 0.3s;
+}
+
+.containerFirstLetterBig p {
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    word-spacing: 2px;
+}
+
+.containerFirstLetterBig p:first-child::first-letter {
+    color: #0d0786;
+    font-weight: bold;
+    font-size: 70px;
+    float: left;
+    line-height: 60px;
+    padding-right: 8px;
+    margin-top: -3px;
+}
+
+@media screen and (max-width:600px) {
+    .containerFirstLetterBig {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+.comingSoon {
+    font-family: "Archivo Black", 'sans-serif';
+    background: #f4d03f;
+    font-size: 15rem;
+    display: flex;
+    flex-direction: column;
+    /*height: 50vh;*/
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.words {
+    color: #f4d03f;
+    font-size: 0;
+    line-height: 1.5;
+}
+
+.words span {
+    font-size: 5rem;
+    display: inline-block;
+    animation: move 3s ease-in-out infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(-30%, 0);
+    }
+
+    50% {
+        text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+    }
+
+    100% {
+        transform: translate(30%, 0);
+    }
+}
+
+.words span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+    animation-delay: 3s;
+}
+
+/*
+    Area Form
+*/
+.form-control {
+    background-color: #fafdc0;
+    border: 1px solid #a9ac75;
+}
+
+.form-check-input {
+    background-color: #fafdc0;
+}
+/*
+
+/* Buttons*/
+
+.btn-primary {
+    background-color: #0d0786;
+    border-color: #0d0786;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dccd1b !important;
+}
+
+a {
+    color: #0d0786;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
